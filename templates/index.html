@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>局域网文件传输工具</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/dropzone@5.9.3/dist/min/dropzone.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='img/upload.png') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="text-center my-4">
+        <h1>局域网文件传输工具</h1>
+        <p class="lead">简单、快速地在局域网内传输文件</p>
+      </header>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+              <h5 class="card-title mb-0">文件上传</h5>
+            </div>
+            <div class="card-body">
+              <form action="/api/upload" class="dropzone" id="upload-dropzone">
+                <div class="dz-message">
+                  <h3>拖放文件到这里上传</h3>
+                  <p>或者点击此处选择文件</p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div
+              class="card-header bg-success text-white d-flex justify-content-between align-items-center"
+            >
+              <h5 class="card-title mb-0">文件列表</h5>
+              <button id="refresh-btn" class="btn btn-sm btn-light">
+                <i class="bi bi-arrow-clockwise"></i> 刷新列表
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>文件名</th>
+                      <th>大小</th>
+                      <th>上传时间</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="file-list">
+                    <!-- 文件列表将通过JavaScript动态加载 -->
+                    <tr>
+                      <td colspan="4" class="text-center">加载文件列表中...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div id="no-files-message" class="alert alert-info d-none">
+                暂无上传的文件
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 删除确认模态框 -->
+      <div
+        class="modal fade"
+        id="deleteModal"
+        tabindex="-1"
+        aria-labelledby="deleteModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteModalLabel">确认删除</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              确定要删除文件 <span id="delete-filename"></span> 吗？
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                取消
+              </button>
+              <button type="button" class="btn btn-danger" id="confirm-delete">
+                确认删除
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="text-center mt-4 mb-5">
+        <p>
+          © <span id="now-year"></span> 局域网文件传输工具 |
+          在同一网络下的设备可通过本机IP地址访问
+        </p>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dropzone@5.9.3/dist/min/dropzone.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+      const nowDate = new Date().getFullYear()
+      document.getElementById('now-year').innerText = nowDate
+    </script>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+/* 全局样式 */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+/* 标题样式 */
+header h1 {
+    color: #343a40;
+    font-weight: 600;
+}
+
+header .lead {
+    color: #6c757d;
+}
+
+/* 卡片样式 */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+}
+
+/* 上传区域样式 */
+.dropzone {
+    border: 2px dashed #0d6efd;
+    border-radius: 5px;
+    background: #f8f9fa;
+    min-height: 150px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.dropzone:hover {
+    background: #e9ecef;
+}
+
+.dropzone .dz-message {
+    text-align: center;
+    margin: 2em 0;
+}
+
+.dropzone .dz-message h3 {
+    color: #0d6efd;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.dropzone .dz-preview .dz-image {
+    border-radius: 8px;
+}
+
+/* 文件列表样式 */
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    font-weight: 600;
+    color: #495057;
+}
+
+.file-name {
+    font-weight: 500;
+    color: #212529;
+}
+
+.file-size, .file-time {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* 按钮样式 */
+.btn-action {
+    margin-right: 5px;
+}
+
+.btn-download {
+    color: #fff;
+    background-color: #0d6efd;
+}
+
+.btn-delete {
+    color: #fff;
+    background-color: #dc3545;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .table-responsive {
+        border: none;
+    }
+    
+    .card-title {
+        font-size: 1.2rem;
+    }
+    
+    .dropzone .dz-message h3 {
+        font-size: 1.2rem;
+    }
+    
+    .dropzone .dz-message p {
+        font-size: 0.9rem;
+    }
+    
+    /* 在移动设备上使用卡片式布局替代表格 */
+    .mobile-file-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 10px;
+        background-color: #fff;
+    }
+    
+    .mobile-file-actions {
+        margin-top: 10px;
+    }
+}
+
+/* 加载动画 */
+.spinner-border {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 5px;
+}
+
+/* 提示消息样式 */
+.alert {
+    border-radius: 8px;
+}
+
+/* 上传进度条样式 */
+.progress {
+    height: 5px;
+    margin-top: 5px;
+    border-radius: 3px;
+}
+
+/* 页脚样式 */
+footer {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
